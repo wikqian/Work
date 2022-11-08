@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script>
+		function isPwd() {
+			var text = document.getElementById("pwd1").value;
+			var re = /^(?=.*[a-z])(?=.*\d)[^]{8,16}$/;
+			var result = re.test(text);
+			if (!result) {
+				document.getElementById("pwd1Span").innerHTML = "密码必须包含数字,字母,且不少于8位";
+				return false;
+			} else {
+				document.getElementById("pwd1Span").innerHTML = "";
+				return true;
+			}
+		};
+		function isPwdl() {
+			var use = document.getElementById("pwd2").value;
+			if (use == null || use == "") {
+				var tip1 = document.getElementById("pwd2Span").innerHTML = "*用户名不能为空！";
+				return false;
+			} else {
+				var tip1 = document.getElementById("pwd2Span");
+				tip1.innerHTML = "<font color='green'>*用户名合法！</font>";
+			}
+		}
+
+		function submit() {
+			if (confirm("提交成功")) {
+				return true;
+			};
+			return false;
+		}
+		function reset(){
+			
+		}
+	</script>
+	<style>
+		body {
+			width: 100%;
+			hyphens: 100%;
+			background-size: 100%;
+		}
+
+		table {
+			line-height: 30px;
+			margin: 150px;
+			font-family: 黑体;
+			font-size: 15px;
+			color: #000;
+		}
+	</style>
+	<body>
+		<form>
+			<table>
+				<tr>
+					<td>姓名:</td>
+					<td>
+						<input type="password" id="pwd2" name="pwd2" onblur="isPwdl()" /><br />
+						<span id="pwd2Span" style="color: red;font-family: 楷体"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>密码:</td>
+					<td>
+						<input type="password" id="pwd1" name="pwd1" onblur="isPwd()" />
+						<span id="pwd1Span" style="color: red;font-family: 楷体"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>性别:</td>
+					<td>
+						<input type="radio" name="sex" value="男" />男
+						<input type="radio" name="sex" value="女" />女
+					</td>
+				</tr>
+				<tr>
+					<td>血型:</td>
+					<td>
+						<input type="radio" name=" blood style" value="A" />A
+						<input type="radio" name=" blood style" value="B" />B
+						<input type="radio" name=" blood style" value="AB" />AB
+						<input type="radio" name=" blood style" value="O" />O
+					</td>
+				</tr>
+				<tr>
+					<td>性格:</td>
+					<td>
+						<input type="checkbox" name="character" value="热情大方" />热情大方
+						<input type="checkbox" name="character" value="温柔体贴" />温柔体贴
+						<input type="checkbox" name="character" value="热情开朗" />热情开朗
+					</td>
+				</tr>
+				<tr>
+					<td>文件:</td>
+					<td>
+						<input type="text" id="file" placeholder="选填" />
+						<input type="button" id="fileTo" webkitdirectory="" value="浏览" />
+					</td>
+				</tr>
+				<tr>
+					<td>简介:</td>
+					<td>
+						<input type="text" id="mi" placeholder="选填" />
+					</td>
+				</tr>
+				<tr>
+					<td>城市:</td>
+					<td>
+						<select id="chengshi">
+							<!-- <option value="选择城市">--请选择--</option> -->
+							<option value="北京市" >北京市</option>
+							<option value="成都市">成都市</option>
+							<option value="南充市">南充市</option>
+							<option value="绵阳市">绵阳市</option>
+							<option value="攀枝花">攀枝花</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<input type="submit" id="submit" value="提交" onclick="submit()" />
+						<input type="reset" id="reset" value="重置" onclick="reset()" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>
